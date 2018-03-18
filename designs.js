@@ -27,12 +27,17 @@ function makeGrid(event) {
         console.log(typeof canvasRow);
         for (var y=0; y<weight; y++) {
             // 新增每一行的单元格
+            // 正确的实现
             var cell = document.createElement("td");
             canvasRow.append(cell);
+
+            // FIXME 错误的实现, 但是不知道why，先标记下
+            // canvasRow.append("<td></td>");
         }
     }
 }
 
+// 必须在table上设置监听，因为makeGrid方法没调用，table是空的，td和tr都没有
 $('table').on('click', 'td', function(event) {
     // 监听单元格上的点击事件，
     event.preventDefault();
